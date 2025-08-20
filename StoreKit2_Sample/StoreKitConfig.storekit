@@ -1,0 +1,220 @@
+{
+  "identifier" : "6965F1E3",
+  "nonRenewingSubscriptions" : [
+    {
+      "displayPrice" : "16.99",
+      "familyShareable" : false,
+      "internalID" : "25DE5758",
+      "localizations" : [
+        {
+          "description" : "Non-recurrsive monthly subscription",
+          "displayName" : "Monthly Subscription",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.sigabrt.storekit2_sample.monthly_subscription",
+      "referenceName" : "Monthly Subscription",
+      "type" : "NonRenewingSubscription"
+    }
+  ],
+  "products" : [
+    {
+      "displayPrice" : "99.00",
+      "familyShareable" : false,
+      "internalID" : "CA0857BE",
+      "localizations" : [
+        {
+          "description" : "A device that monitors brain palse",
+          "displayName" : "Palse Censor",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.sigabrt.storekit2_sample.palse_censor",
+      "referenceName" : "Palse Censor",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "79.00",
+      "familyShareable" : false,
+      "internalID" : "7857B356",
+      "localizations" : [
+        {
+          "description" : "Pillow that monitors the state of your sleep",
+          "displayName" : "Sleep Tracer Pillow",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.sigabrt.storekit2_sample.sleep_tracer_pillow",
+      "referenceName" : "Sleep Tracer Pillow",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "10.00",
+      "familyShareable" : false,
+      "internalID" : "2FAC08A7",
+      "localizations" : [
+        {
+          "description" : "Online sleep seminar on August 20, 2025",
+          "displayName" : "Sleep Seminar August 20, 2025",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.sigabrt.storekit2_sample.sleep_seminar_20250820",
+      "referenceName" : "Sleep Seminar August 20, 2025",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_failTransactionsEnabled" : false,
+    "_storeKitErrors" : [
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Load Products"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Purchase"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Verification"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Store Sync"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Subscription Status"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Transaction"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Manage Subscriptions Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Refund Request Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Offer Code Redeem Sheet"
+      }
+    ]
+  },
+  "subscriptionGroups" : [
+    {
+      "id" : "0D8091DE",
+      "localizations" : [
+
+      ],
+      "name" : "Sleep Tracer Access Subscriptions",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "9.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "C40DAFE4",
+          "introductoryOffer" : {
+            "displayPrice" : "0.99",
+            "internalID" : "2FDC0F66",
+            "paymentMode" : "free",
+            "subscriptionPeriod" : "P1M"
+          },
+          "localizations" : [
+            {
+              "description" : "Monthly Subscription for Adults 18 or older",
+              "displayName" : "Auto-Renewable Adult Access",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "com.sigabrt.storekit2_sample.adult_access",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "Adult Access Subscription",
+          "subscriptionGroupID" : "0D8091DE",
+          "type" : "RecurringSubscription"
+        },
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "1.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "7F47DAFC",
+          "introductoryOffer" : {
+            "internalID" : "CB289091",
+            "paymentMode" : "free",
+            "subscriptionPeriod" : "P3M"
+          },
+          "localizations" : [
+            {
+              "description" : "Monthly subscription for teenager age 13 - 17",
+              "displayName" : "Auto-Renewable Teenager Access",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "com.sigabrt.storekit2_sample.teenager_access",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "Teenager Access Subscription",
+          "subscriptionGroupID" : "0D8091DE",
+          "type" : "RecurringSubscription"
+        },
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "0.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "29D7CEC5",
+          "introductoryOffer" : {
+            "internalID" : "5015BE5C",
+            "paymentMode" : "free",
+            "subscriptionPeriod" : "P3M"
+          },
+          "localizations" : [
+            {
+              "description" : "Monthly subscription for kids age 12-younger",
+              "displayName" : "Auto-Renewable Kid Access",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "com.sigabrt.storekit2_sample.kid_access",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "Kid Access Subscription",
+          "subscriptionGroupID" : "0D8091DE",
+          "type" : "RecurringSubscription"
+        }
+      ]
+    }
+  ],
+  "version" : {
+    "major" : 3,
+    "minor" : 0
+  }
+}

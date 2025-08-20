@@ -14,6 +14,9 @@
 		8C3039512E5622C000AFAE8C /* StoreKit2_SampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3039502E5622C000AFAE8C /* StoreKit2_SampleTests.swift */; };
 		8C30395B2E5622C000AFAE8C /* StoreKit2_SampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C30395A2E5622C000AFAE8C /* StoreKit2_SampleUITests.swift */; };
 		8C30395D2E5622C000AFAE8C /* StoreKit2_SampleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C30395C2E5622C000AFAE8C /* StoreKit2_SampleUITestsLaunchTests.swift */; };
+		8C30396A2E56295600AFAE8C /* StoreKitConfig.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 8C3039692E56295600AFAE8C /* StoreKitConfig.storekit */; };
+		8C30396B2E56295600AFAE8C /* StoreKitConfig.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 8C3039692E56295600AFAE8C /* StoreKitConfig.storekit */; };
+		8C30396C2E56295600AFAE8C /* StoreKitConfig.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 8C3039692E56295600AFAE8C /* StoreKitConfig.storekit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +47,7 @@
 		8C3039562E5622C000AFAE8C /* StoreKit2_SampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StoreKit2_SampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C30395A2E5622C000AFAE8C /* StoreKit2_SampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreKit2_SampleUITests.swift; sourceTree = "<group>"; };
 		8C30395C2E5622C000AFAE8C /* StoreKit2_SampleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreKit2_SampleUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		8C3039692E56295600AFAE8C /* StoreKitConfig.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = StoreKitConfig.storekit; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +100,7 @@
 			children = (
 				8C30393F2E5622BE00AFAE8C /* StoreKit2_SampleApp.swift */,
 				8C3039412E5622BE00AFAE8C /* ContentView.swift */,
+				8C3039692E56295600AFAE8C /* StoreKitConfig.storekit */,
 				8C3039432E5622C000AFAE8C /* Assets.xcassets */,
 				8C3039452E5622C000AFAE8C /* Preview Content */,
 			);
@@ -231,6 +236,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C30396A2E56295600AFAE8C /* StoreKitConfig.storekit in Resources */,
 				8C3039472E5622C000AFAE8C /* Preview Assets.xcassets in Resources */,
 				8C3039442E5622C000AFAE8C /* Assets.xcassets in Resources */,
 			);
@@ -240,6 +246,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C30396B2E56295600AFAE8C /* StoreKitConfig.storekit in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -247,6 +254,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C30396C2E56295600AFAE8C /* StoreKitConfig.storekit in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
