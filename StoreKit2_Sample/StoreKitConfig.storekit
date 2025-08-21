@@ -7,13 +7,13 @@
       "internalID" : "25DE5758",
       "localizations" : [
         {
-          "description" : "Non-recurrsive for adultsm 18 or older",
-          "displayName" : "Adult Monthly Subscription",
+          "description" : "Non-recursive for adultsm 18 or older",
+          "displayName" : "Adult One-Month Subscription",
           "locale" : "en_US"
         }
       ],
       "productID" : "com.sigabrt.storekit2_sample.monthly_subscription",
-      "referenceName" : "Adult Monthly Subscription",
+      "referenceName" : "Adult One-Month Subscription",
       "type" : "NonRenewingSubscription"
     },
     {
@@ -22,13 +22,13 @@
       "internalID" : "38109F51",
       "localizations" : [
         {
-          "description" : "Non-recurrsive for teenager 13-17",
-          "displayName" : "Teenager Monthly Subscription",
+          "description" : "Non-recursive for teenager 13-17",
+          "displayName" : "Teenager One-Month Subscriptio",
           "locale" : "en_US"
         }
       ],
       "productID" : "com.sigabrt.storekit2_sample.teenager_monthly_subscription",
-      "referenceName" : "Teenager Monthly Subscription",
+      "referenceName" : "Teenager One-Month Subscription",
       "type" : "NonRenewingSubscription"
     },
     {
@@ -37,13 +37,13 @@
       "internalID" : "509E3095",
       "localizations" : [
         {
-          "description" : "Non-recurrsive for kids 12 or younger",
-          "displayName" : "Kid Monthly Subscription",
+          "description" : "Non-recursive for kids 12 or younger",
+          "displayName" : "Kid One-Month Subscription",
           "locale" : "en_US"
         }
       ],
       "productID" : "com.sigabrt.storekit2_sample.kid_monthly_subscription",
-      "referenceName" : "Kid Monthly Subscription",
+      "referenceName" : "Kid One-Month Subscription",
       "type" : "NonRenewingSubscription"
     }
   ],
@@ -79,8 +79,8 @@
       "type" : "Consumable"
     },
     {
-      "displayPrice" : "10.00",
-      "familyShareable" : false,
+      "displayPrice" : "5.00",
+      "familyShareable" : true,
       "internalID" : "2FAC08A7",
       "localizations" : [
         {
@@ -162,7 +162,7 @@
 
           ],
           "displayPrice" : "9.99",
-          "familyShareable" : false,
+          "familyShareable" : true,
           "groupNumber" : 1,
           "internalID" : "C40DAFE4",
           "introductoryOffer" : {

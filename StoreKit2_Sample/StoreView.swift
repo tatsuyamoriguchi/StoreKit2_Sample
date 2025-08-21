@@ -14,7 +14,7 @@ func loadProductEmojis() -> [String: String] {
         print("⚠️ Could not find Products.plist in bundle")
         return [:]
     }
-
+    
     do {
         if let dict = try PropertyListSerialization.propertyList(from: data, format: nil) as? [String: String] {
             return dict
@@ -32,17 +32,37 @@ struct StoreView: View {
     @State private var products: [StoreKit.Product] = []
     private static let productIdToEmoji = loadProductEmojis()
     private let productIdToEmoji = StoreView.productIdToEmoji
-
+    
+    
     var body: some View {
-        List(products) { p in
-            HStack {
-                Text(p.displayName)          // StoreKit 2 API
-                Text(productIdToEmoji[p.id] ?? "")
+        NavigationView {
+            List {
+                Section("Auto-Renewing Subscriptions") {
+                    ForEach(products.filter { $0.type == .autoRenewable }) { p in
+                        ProductRow(p)
+                    }
+                }
+                Section("Non-Renewing Subscriptions") {
+                    ForEach(products.filter { $0.type == .nonRenewable }) { p in
+                        ProductRow(p)
+                    }
+                }
+                Section("Non-Consumables") {
+                    ForEach(products.filter { $0.type == .nonConsumable }) { p in
+                        ProductRow(p)
+                    }
+                }
+                Section("Consumables") {
+                    ForEach(products.filter { $0.type == .consumable }) { p in
+                        ProductRow(p)
+                    }
+                }
             }
         }
-        .task { await requestProducts() }     // Fetch on appear
+        .task { await requestProducts() }
+        .navigationTitle("Sleep Tracer Store")
     }
-
+    
     @MainActor
     private func requestProducts() async {
         do {
@@ -52,6 +72,33 @@ struct StoreView: View {
         } catch {
             print("Failed product request: \(error)")
         }
+    }
+    
+    @ViewBuilder
+    func ProductRow(_ p: Product) -> some View {
+        VStack(alignment: .leading, spacing: 4) {
+            HStack {
+                Text(p.displayName)
+                Text(productIdToEmoji[p.id] ?? "")
+            }
+            Text(p.description)
+            Text(p.displayPrice)
+            if p.isFamilyShareable.description == "true" {
+                Text("Family Shareable")
+            }
+
+            if let offer = p.subscription?.introductoryOffer {
+                if offer.paymentMode == .freeTrial {
+                    Text("Free Trial: \(offer.period.debugDescription)")
+                } else {
+                    Text("Intro Offer: \(offer.paymentMode.rawValue) for \(offer.period.debugDescription)")
+                }
+//            } else {
+//                Text("No intro offer available")
+            }
+            
+        }
+        .padding(.vertical, 4)
     }
     
 }
