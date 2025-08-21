@@ -2,18 +2,48 @@
   "identifier" : "6965F1E3",
   "nonRenewingSubscriptions" : [
     {
-      "displayPrice" : "16.99",
+      "displayPrice" : "14.99",
       "familyShareable" : false,
       "internalID" : "25DE5758",
       "localizations" : [
         {
-          "description" : "Non-recurrsive monthly subscription",
-          "displayName" : "Monthly Subscription",
+          "description" : "Non-recurrsive for adultsm 18 or older",
+          "displayName" : "Adult Monthly Subscription",
           "locale" : "en_US"
         }
       ],
       "productID" : "com.sigabrt.storekit2_sample.monthly_subscription",
-      "referenceName" : "Monthly Subscription",
+      "referenceName" : "Adult Monthly Subscription",
+      "type" : "NonRenewingSubscription"
+    },
+    {
+      "displayPrice" : "2.99",
+      "familyShareable" : false,
+      "internalID" : "38109F51",
+      "localizations" : [
+        {
+          "description" : "Non-recurrsive for teenager 13-17",
+          "displayName" : "Teenager Monthly Subscription",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.sigabrt.storekit2_sample.teenager_monthly_subscription",
+      "referenceName" : "Teenager Monthly Subscription",
+      "type" : "NonRenewingSubscription"
+    },
+    {
+      "displayPrice" : "1.99",
+      "familyShareable" : false,
+      "internalID" : "509E3095",
+      "localizations" : [
+        {
+          "description" : "Non-recurrsive for kids 12 or younger",
+          "displayName" : "Kid Monthly Subscription",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.sigabrt.storekit2_sample.kid_monthly_subscription",
+      "referenceName" : "Kid Monthly Subscription",
       "type" : "NonRenewingSubscription"
     }
   ],
@@ -66,6 +96,8 @@
   ],
   "settings" : {
     "_failTransactionsEnabled" : false,
+    "_locale" : "en_US",
+    "_storefront" : "USA",
     "_storeKitErrors" : [
       {
         "current" : null,
@@ -193,7 +225,7 @@
           "groupNumber" : 1,
           "internalID" : "29D7CEC5",
           "introductoryOffer" : {
-            "internalID" : "5015BE5C",
+            "internalID" : "0FF89CE1",
             "paymentMode" : "free",
             "subscriptionPeriod" : "P3M"
           },

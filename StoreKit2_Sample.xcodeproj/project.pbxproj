@@ -17,6 +17,8 @@
 		8C30396A2E56295600AFAE8C /* StoreKitConfig.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 8C3039692E56295600AFAE8C /* StoreKitConfig.storekit */; };
 		8C30396B2E56295600AFAE8C /* StoreKitConfig.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 8C3039692E56295600AFAE8C /* StoreKitConfig.storekit */; };
 		8C30396C2E56295600AFAE8C /* StoreKitConfig.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 8C3039692E56295600AFAE8C /* StoreKitConfig.storekit */; };
+		8C30396E2E56727200AFAE8C /* Products.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8C30396D2E56727200AFAE8C /* Products.plist */; };
+		8C3039722E56824E00AFAE8C /* StoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3039712E56824E00AFAE8C /* StoreView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,8 @@
 		8C30395A2E5622C000AFAE8C /* StoreKit2_SampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreKit2_SampleUITests.swift; sourceTree = "<group>"; };
 		8C30395C2E5622C000AFAE8C /* StoreKit2_SampleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreKit2_SampleUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		8C3039692E56295600AFAE8C /* StoreKitConfig.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = StoreKitConfig.storekit; sourceTree = "<group>"; };
+		8C30396D2E56727200AFAE8C /* Products.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Products.plist; sourceTree = "<group>"; };
+		8C3039712E56824E00AFAE8C /* StoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +104,9 @@
 			children = (
 				8C30393F2E5622BE00AFAE8C /* StoreKit2_SampleApp.swift */,
 				8C3039412E5622BE00AFAE8C /* ContentView.swift */,
+				8C3039712E56824E00AFAE8C /* StoreView.swift */,
 				8C3039692E56295600AFAE8C /* StoreKitConfig.storekit */,
+				8C30396D2E56727200AFAE8C /* Products.plist */,
 				8C3039432E5622C000AFAE8C /* Assets.xcassets */,
 				8C3039452E5622C000AFAE8C /* Preview Content */,
 			);
@@ -236,6 +242,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C30396E2E56727200AFAE8C /* Products.plist in Resources */,
 				8C30396A2E56295600AFAE8C /* StoreKitConfig.storekit in Resources */,
 				8C3039472E5622C000AFAE8C /* Preview Assets.xcassets in Resources */,
 				8C3039442E5622C000AFAE8C /* Assets.xcassets in Resources */,
@@ -265,6 +272,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C3039722E56824E00AFAE8C /* StoreView.swift in Sources */,
 				8C3039422E5622BE00AFAE8C /* ContentView.swift in Sources */,
 				8C3039402E5622BE00AFAE8C /* StoreKit2_SampleApp.swift in Sources */,
 			);
