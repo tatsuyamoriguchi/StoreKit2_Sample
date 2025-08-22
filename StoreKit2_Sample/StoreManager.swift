@@ -14,6 +14,30 @@ class StoreManager: ObservableObject {
 
     @Published var purchasedIdentifiers: Set<String> = []
 
+    private(set) var productIdToEmoji: [String: String] = [:]
+
+        private init() {
+            loadProductEmojis()
+        }
+    
+    private func loadProductEmojis() {
+        guard let url = Bundle.main.url(forResource: "Products", withExtension: "plist"),
+              let data = try? Data(contentsOf: url) else {
+            print("⚠️ Could not find Products.plist in bundle")
+            return
+        }
+        
+        do {
+            if let dict = try PropertyListSerialization.propertyList(from: data, format: nil) as? [String: String] {
+                productIdToEmoji = dict
+            } else {
+                print("⚠️ Products.plist not a [String: String]")
+            }
+        } catch {
+            print("⚠️ Failed to decode Products.plist: \(error)")
+        }
+    }
+    
     // Update purchased IDs
     func updatePurchasedIdentifiers(_ transaction: Transaction) {
         purchasedIdentifiers.insert(transaction.productID)

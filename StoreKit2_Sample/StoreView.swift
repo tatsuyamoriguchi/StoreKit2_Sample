@@ -8,31 +8,9 @@
 import SwiftUI
 import StoreKit
 
-func loadProductEmojis() -> [String: String] {
-    guard let url = Bundle.main.url(forResource: "Products", withExtension: "plist"),
-          let data = try? Data(contentsOf: url) else {
-        print("⚠️ Could not find Products.plist in bundle")
-        return [:]
-    }
-    
-    do {
-        if let dict = try PropertyListSerialization.propertyList(from: data, format: nil) as? [String: String] {
-            return dict
-        } else {
-            print("⚠️ Products.plist not a [String: String]")
-            return [:]
-        }
-    } catch {
-        print("⚠️ Failed to decode Products.plist: \(error)")
-        return [:]
-    }
-}
-
 struct StoreView: View {
     @State private var products: [StoreKit.Product] = []
-    private static let productIdToEmoji = loadProductEmojis()
-    private let productIdToEmoji = StoreView.productIdToEmoji
-
+    @StateObject private var storeManager = StoreManager.shared
     
     var body: some View {
         NavigationView {
@@ -66,7 +44,7 @@ struct StoreView: View {
     @MainActor
     private func requestProducts() async {
         do {
-            let ids = Set(productIdToEmoji.keys)
+            let ids = Set(storeManager.productIdToEmoji.keys)
             let fetched = try await StoreKit.Product.products(for: ids) // note the StoreKit. prefix
             products = fetched.sorted { $0.displayName < $1.displayName }
         } catch {
@@ -79,7 +57,7 @@ struct StoreView: View {
         VStack(alignment: .leading, spacing: 4) {
             HStack {
                 Text(p.displayName)
-                Text(productIdToEmoji[p.id] ?? "")
+                Text(storeManager.productIdToEmoji[p.id] ?? "")
             }
             Text(p.description)
             Text(p.displayPrice)
