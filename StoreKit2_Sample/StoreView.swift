@@ -66,19 +66,16 @@ struct StoreView: View {
             } label: {
                 if storeManager.purchasedIdentifiers.contains(p.id) {
                     Label("Purchased", systemImage: "checkmark.circle.fill")
-                        .foregroundStyle(.green)
+
                 } else if purchasingProductID == p.id {
                     ProgressView() // spinner while purchasing
                         .progressViewStyle(CircularProgressViewStyle())
                 } else {
                     Text(priceLabel(for: p))
-                                .foregroundStyle(.white)
-                                .frame(maxWidth: .infinity)
-                                .padding(.vertical, 8)
-                                .background(Color.blue)
-                                .cornerRadius(10)
                 }
             }
+            .buttonStyle(.borderedProminent)
+            .tint(storeManager.purchasedIdentifiers.contains(p.id) ? .green : .blue)
             .disabled(purchasingProductID == p.id) // disable a button only pressed
 
             
