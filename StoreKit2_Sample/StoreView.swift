@@ -32,29 +32,31 @@ struct StoreView: View {
     @State private var products: [StoreKit.Product] = []
     private static let productIdToEmoji = loadProductEmojis()
     private let productIdToEmoji = StoreView.productIdToEmoji
+        
     
+
     
     var body: some View {
         NavigationView {
             List {
                 Section("Auto-Renewing Subscriptions") {
                     ForEach(products.filter { $0.type == .autoRenewable }) { p in
-                        ProductRow(p)
+                        productRow(p)
                     }
                 }
                 Section("Non-Renewing Subscriptions") {
                     ForEach(products.filter { $0.type == .nonRenewable }) { p in
-                        ProductRow(p)
+                        productRow(p)
                     }
                 }
-                Section("Non-Consumables") {
+                Section("Events") {
                     ForEach(products.filter { $0.type == .nonConsumable }) { p in
-                        ProductRow(p)
+                        productRow(p)
                     }
                 }
-                Section("Consumables") {
+                Section("Sleep Goods") {
                     ForEach(products.filter { $0.type == .consumable }) { p in
-                        ProductRow(p)
+                        productRow(p)
                     }
                 }
             }
@@ -75,7 +77,7 @@ struct StoreView: View {
     }
     
     @ViewBuilder
-    func ProductRow(_ p: Product) -> some View {
+    func productRow(_ p: Product) -> some View {
         VStack(alignment: .leading, spacing: 4) {
             HStack {
                 Text(p.displayName)
@@ -85,22 +87,53 @@ struct StoreView: View {
             Text(p.displayPrice)
             if p.isFamilyShareable.description == "true" {
                 Text("Family Shareable")
+                    .foregroundStyle(Color.red)
             }
 
             if let offer = p.subscription?.introductoryOffer {
                 if offer.paymentMode == .freeTrial {
                     Text("Free Trial: \(offer.period.debugDescription)")
+                        .foregroundStyle(Color.teal)
                 } else {
                     Text("Intro Offer: \(offer.paymentMode.rawValue) for \(offer.period.debugDescription)")
                 }
-//            } else {
-//                Text("No intro offer available")
             }
             
         }
         .padding(.vertical, 4)
     }
     
+    func purchase(_ product: Product) async throws -> StoreKit.Transaction? {
+        let currentAccountToken = UUID() // Use userId for Fax Echo
+        let result = try await product.purchase(options: [.appAccountToken(currentAccountToken)])
+        
+        switch result {
+        case .success(let verification):
+            let transaction = try checkVerified(verification)
+            await StoreManager.shared.updatePurchasedIdentifiers(transaction)
+            await transaction.finish()
+            return transaction
+        case .pending, .userCancelled:
+            return nil
+        default:
+            return nil
+            
+        }
+    }
+    
+    func checkVerified<T>(_ result: VerificationResult<T>) throws -> T {
+        switch result {
+        case .unverified:
+            throw StoreKitError.failedVerification
+        case .verified(let value):
+            return value
+        }
+    }
+    
+    enum StoreKitError: Error {
+        case failedVerification
+    }
+
 }
 
 
@@ -109,3 +142,25 @@ struct StoreView: View {
     
     StoreView()
 }
+
+/*
+ Seminar as part of an auto-renewable subscription
+ You can bundle access to the seminar as an entitlement.
+ Anyone who is an active subscriber (or uses a free trial / offer code) automatically gets the seminar.
+ In Swift/StoreKit 2, check Transaction.currentEntitlements to determine what the subscriber is allowed to access.
+ 
+ Practical setup for your use case
+ Create an auto-renewable subscription product (e.g., “Monthly Seminar Access”).
+ In your app, map subscription entitlement → seminar access.
+ Optionally, create offer codes in App Store Connect for the subscription, so new users or lapsed subscribers can get a free trial.
+ Use StoreKit 2 APIs:
+ let entitlements = await Transaction.currentEntitlements
+ if entitlements.contains(where: { $0.productID == "com.yourapp.monthly_seminar" }) {
+     // Grant access to seminar content
+ }
+ Non-subscription seminars (one-time) remain non-consumable and cannot use offer codes. You’d manage any free access yourself.
+ 💡 Key point:
+ Offer codes only work with auto-renewable subscriptions.
+ If you want subscribers to get free seminars automatically, bundle the seminars behind an active subscription.
+ 
+ */
