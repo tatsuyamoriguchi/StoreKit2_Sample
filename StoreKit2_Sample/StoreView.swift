@@ -32,8 +32,6 @@ struct StoreView: View {
     @State private var products: [StoreKit.Product] = []
     private static let productIdToEmoji = loadProductEmojis()
     private let productIdToEmoji = StoreView.productIdToEmoji
-        
-    
 
     
     var body: some View {
@@ -103,36 +101,7 @@ struct StoreView: View {
         .padding(.vertical, 4)
     }
     
-    func purchase(_ product: Product) async throws -> StoreKit.Transaction? {
-        let currentAccountToken = UUID() // Use userId for Fax Echo
-        let result = try await product.purchase(options: [.appAccountToken(currentAccountToken)])
-        
-        switch result {
-        case .success(let verification):
-            let transaction = try checkVerified(verification)
-            await StoreManager.shared.updatePurchasedIdentifiers(transaction)
-            await transaction.finish()
-            return transaction
-        case .pending, .userCancelled:
-            return nil
-        default:
-            return nil
-            
-        }
-    }
-    
-    func checkVerified<T>(_ result: VerificationResult<T>) throws -> T {
-        switch result {
-        case .unverified:
-            throw StoreKitError.failedVerification
-        case .verified(let value):
-            return value
-        }
-    }
-    
-    enum StoreKitError: Error {
-        case failedVerification
-    }
+
 
 }
 
