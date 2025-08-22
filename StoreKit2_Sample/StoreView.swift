@@ -9,49 +9,40 @@ import SwiftUI
 import StoreKit
 
 struct StoreView: View {
-    @State private var products: [StoreKit.Product] = []
+    
     @StateObject private var storeManager = StoreManager.shared
+    @State private var purchasingProductID: String? = nil
+
     
     var body: some View {
         NavigationView {
             List {
                 Section("Auto-Renewing Subscriptions") {
-                    ForEach(products.filter { $0.type == .autoRenewable }) { p in
+                    ForEach(storeManager.products.filter { $0.type == .autoRenewable }) { p in
                         productRow(p)
                     }
                 }
                 Section("Non-Renewing Subscriptions") {
-                    ForEach(products.filter { $0.type == .nonRenewable }) { p in
+                    ForEach(storeManager.products.filter { $0.type == .nonRenewable }) { p in
                         productRow(p)
                     }
                 }
                 Section("Events") {
-                    ForEach(products.filter { $0.type == .nonConsumable }) { p in
+                    ForEach(storeManager.products.filter { $0.type == .nonConsumable }) { p in
                         productRow(p)
                     }
                 }
                 Section("Sleep Goods") {
-                    ForEach(products.filter { $0.type == .consumable }) { p in
+                    ForEach(storeManager.products.filter { $0.type == .consumable }) { p in
                         productRow(p)
                     }
                 }
             }
         }
-        .task { await requestProducts() }
+        .task { await storeManager.requestProducts() }
         .navigationTitle("Sleep Tracer Store")
     }
-    
-    @MainActor
-    private func requestProducts() async {
-        do {
-            let ids = Set(storeManager.productIdToEmoji.keys)
-            let fetched = try await StoreKit.Product.products(for: ids) // note the StoreKit. prefix
-            products = fetched.sorted { $0.displayName < $1.displayName }
-        } catch {
-            print("Failed product request: \(error)")
-        }
-    }
-    
+        
     @ViewBuilder
     func productRow(_ p: Product) -> some View {
         VStack(alignment: .leading, spacing: 4) {
@@ -60,7 +51,37 @@ struct StoreView: View {
                 Text(storeManager.productIdToEmoji[p.id] ?? "")
             }
             Text(p.description)
-            Text(p.displayPrice)
+
+            Button {
+                Task {
+                    do {
+                        purchasingProductID = p.id
+                        let transaction = try await storeManager.purchase(p)
+                        print("✅ Purchased: \(transaction?.productID ?? "nil")")
+                    } catch {
+                        print("⚠️ Purchase failed: \(error)")
+                    }
+                    purchasingProductID = nil
+                }
+            } label: {
+                if storeManager.purchasedIdentifiers.contains(p.id) {
+                    Label("Purchased", systemImage: "checkmark.circle.fill")
+                        .foregroundStyle(.green)
+                } else if purchasingProductID == p.id {
+                    ProgressView() // spinner while purchasing
+                        .progressViewStyle(CircularProgressViewStyle())
+                } else {
+                    Text(priceLabel(for: p))
+                                .foregroundStyle(.white)
+                                .frame(maxWidth: .infinity)
+                                .padding(.vertical, 8)
+                                .background(Color.blue)
+                                .cornerRadius(10)
+                }
+            }
+            .disabled(purchasingProductID == p.id) // disable a button only pressed
+
+            
             if p.isFamilyShareable.description == "true" {
                 Text("Family Shareable")
                     .foregroundStyle(Color.red)
@@ -78,6 +99,15 @@ struct StoreView: View {
         }
         .padding(.vertical, 4)
     }
+    
+    private func priceLabel(for product: Product) -> String {
+        if product.type == .autoRenewable {
+            return "\(product.displayPrice) / month"
+        } else {
+            return product.displayPrice
+        }
+    }
+
     
 
 

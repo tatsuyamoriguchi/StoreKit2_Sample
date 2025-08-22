@@ -11,14 +11,23 @@ import StoreKit
 @MainActor
 class StoreManager: ObservableObject {
     static let shared = StoreManager() // Singleton (shared instance)
-
     @Published var purchasedIdentifiers: Set<String> = []
-
+    @Published var products: [Product] = []
     private(set) var productIdToEmoji: [String: String] = [:]
-
-        private init() {
-            loadProductEmojis()
+    private init() {
+        loadProductEmojis()
+    }
+    
+    // Fetch products
+    func requestProducts() async {
+        do {
+            let ids = Set(productIdToEmoji.keys)
+            let fetched = try await Product.products(for: ids)
+            products = fetched.sorted { $0.displayName < $1.displayName }
+        } catch {
+            print("⚠️ Failed product request: \(error)")
         }
+    }
     
     private func loadProductEmojis() {
         guard let url = Bundle.main.url(forResource: "Products", withExtension: "plist"),
