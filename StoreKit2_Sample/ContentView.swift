@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var storeManager = StoreManager.shared
     var body: some View {
         NavigationStack {
             VStack {
@@ -18,6 +19,9 @@ struct ContentView: View {
                 
                NavigationLink("Go To Store") {
                    StoreView()
+                       .onAppear {
+                           storeManager.listenForTransactions()
+                       }
                 }
             }
             .padding()

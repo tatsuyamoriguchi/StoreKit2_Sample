@@ -10,7 +10,7 @@ import StoreKit
 
 struct StoreView: View {
     
-    @StateObject private var storeManager = StoreManager.shared
+    @ObservedObject var storeManager = StoreManager.shared
     @State private var purchasingProductID: String? = nil
 
     
@@ -32,7 +32,7 @@ struct StoreView: View {
                         productRow(p)
                     }
                 }
-                Section("Sleep Goods") {
+                Section("Goods") {
                     ForEach(storeManager.products.filter { $0.type == .consumable }) { p in
                         productRow(p)
                     }

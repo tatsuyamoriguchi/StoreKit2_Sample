@@ -24,6 +24,13 @@ class StoreManager: ObservableObject {
             let ids = Set(productIdToEmoji.keys)
             let fetched = try await Product.products(for: ids)
             products = fetched.sorted { $0.displayName < $1.displayName }
+            
+            // ✅ Check if already purchased
+            for product in products {
+                if try await isPurchased(product.id) {
+                    purchasedIdentifiers.insert(product.id)
+                }
+            }
         } catch {
             print("⚠️ Failed product request: \(error)")
         }
@@ -81,6 +88,30 @@ class StoreManager: ObservableObject {
     
     enum StoreKitError: Error {
         case failedVerification
+    }
+    
+    func listenForTransactions() {
+        Task.detached(priority: .background) {
+            for await result in Transaction.updates {
+                do {
+                    let transaction = try await self.checkVerified(result)
+                    await self.updatePurchasedIdentifiers(transaction)
+                    await transaction.finish()
+                    print("✅ Transaction processed: \(transaction.productID)")
+                } catch {
+                    print("Transazation failed verification")
+                }
+            }
+        }
+    }
+    
+    func isPurchased(_ productIdentifier: String) async throws -> Bool {
+        guard let result = await Transaction.latest(for: productIdentifier) else {
+            return false
+        }
+        
+        let transaction = try checkVerified(result)
+        return transaction.revocationDate == nil && !transaction.isUpgraded
     }
     
 
