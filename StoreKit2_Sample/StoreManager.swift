@@ -90,7 +90,7 @@ class StoreManager: ObservableObject {
         case failedVerification
     }
     
-    func listenForTransactions() {
+    func listenForTransactions() async {
         Task.detached(priority: .background) {
             for await result in Transaction.updates {
                 do {

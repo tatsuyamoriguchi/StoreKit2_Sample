@@ -1,51 +1,7 @@
 {
   "identifier" : "6965F1E3",
   "nonRenewingSubscriptions" : [
-    {
-      "displayPrice" : "14.99",
-      "familyShareable" : false,
-      "internalID" : "25DE5758",
-      "localizations" : [
-        {
-          "description" : "Non-recursive for adultsm 18 or older",
-          "displayName" : "Adult One-Month Subscription",
-          "locale" : "en_US"
-        }
-      ],
-      "productID" : "com.sigabrt.storekit2_sample.monthly_subscription",
-      "referenceName" : "Adult One-Month Subscription",
-      "type" : "NonRenewingSubscription"
-    },
-    {
-      "displayPrice" : "2.99",
-      "familyShareable" : false,
-      "internalID" : "38109F51",
-      "localizations" : [
-        {
-          "description" : "Non-recursive for teenager 13-17",
-          "displayName" : "Teenager One-Month Subscriptio",
-          "locale" : "en_US"
-        }
-      ],
-      "productID" : "com.sigabrt.storekit2_sample.teenager_monthly_subscription",
-      "referenceName" : "Teenager One-Month Subscription",
-      "type" : "NonRenewingSubscription"
-    },
-    {
-      "displayPrice" : "1.99",
-      "familyShareable" : false,
-      "internalID" : "509E3095",
-      "localizations" : [
-        {
-          "description" : "Non-recursive for kids 12 or younger",
-          "displayName" : "Kid One-Month Subscription",
-          "locale" : "en_US"
-        }
-      ],
-      "productID" : "com.sigabrt.storekit2_sample.kid_monthly_subscription",
-      "referenceName" : "Kid One-Month Subscription",
-      "type" : "NonRenewingSubscription"
-    }
+
   ],
   "products" : [
     {
@@ -89,8 +45,8 @@
           "locale" : "en_US"
         }
       ],
-      "productID" : "com.sigabrt.storekit2_sample.sleep_seminar_20250820",
-      "referenceName" : "Sleep Seminar August 20, 2025",
+      "productID" : "com.sigabrt.storekit2_sample.sleep_seminar",
+      "referenceName" : "Sleep Seminar",
       "type" : "NonConsumable"
     }
   ],
@@ -182,65 +138,7 @@
           ],
           "productID" : "com.sigabrt.storekit2_sample.adult_access",
           "recurringSubscriptionPeriod" : "P1M",
-          "referenceName" : "Adult Access Subscription",
-          "subscriptionGroupID" : "0D8091DE",
-          "type" : "RecurringSubscription"
-        },
-        {
-          "adHocOffers" : [
-
-          ],
-          "codeOffers" : [
-
-          ],
-          "displayPrice" : "1.99",
-          "familyShareable" : false,
-          "groupNumber" : 1,
-          "internalID" : "7F47DAFC",
-          "introductoryOffer" : {
-            "internalID" : "CB289091",
-            "paymentMode" : "free",
-            "subscriptionPeriod" : "P3M"
-          },
-          "localizations" : [
-            {
-              "description" : "Monthly subscription for teenager age 13 - 17",
-              "displayName" : "Auto-Renewable Teenager Access",
-              "locale" : "en_US"
-            }
-          ],
-          "productID" : "com.sigabrt.storekit2_sample.teenager_access",
-          "recurringSubscriptionPeriod" : "P1M",
-          "referenceName" : "Teenager Access Subscription",
-          "subscriptionGroupID" : "0D8091DE",
-          "type" : "RecurringSubscription"
-        },
-        {
-          "adHocOffers" : [
-
-          ],
-          "codeOffers" : [
-
-          ],
-          "displayPrice" : "0.99",
-          "familyShareable" : false,
-          "groupNumber" : 1,
-          "internalID" : "29D7CEC5",
-          "introductoryOffer" : {
-            "internalID" : "0FF89CE1",
-            "paymentMode" : "free",
-            "subscriptionPeriod" : "P3M"
-          },
-          "localizations" : [
-            {
-              "description" : "Monthly subscription for kids age 12-younger",
-              "displayName" : "Auto-Renewable Kid Access",
-              "locale" : "en_US"
-            }
-          ],
-          "productID" : "com.sigabrt.storekit2_sample.kid_access",
-          "recurringSubscriptionPeriod" : "P1M",
-          "referenceName" : "Kid Access Subscription",
+          "referenceName" : "Sleep Tracer Auto-Renewal Subscription",
           "subscriptionGroupID" : "0D8091DE",
           "type" : "RecurringSubscription"
         }

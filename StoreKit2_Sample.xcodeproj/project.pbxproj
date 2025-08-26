@@ -22,6 +22,7 @@
 		8C3039742E57F6ED00AFAE8C /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3039732E57F6ED00AFAE8C /* StoreManager.swift */; };
 		8C3039752E57F6ED00AFAE8C /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3039732E57F6ED00AFAE8C /* StoreManager.swift */; };
 		8C3039762E57F6ED00AFAE8C /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3039732E57F6ED00AFAE8C /* StoreManager.swift */; };
+		8C45CCA42E5E23B6000CF96F /* DummyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C45CCA32E5E23B6000CF96F /* DummyView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		8C30396D2E56727200AFAE8C /* Products.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Products.plist; sourceTree = "<group>"; };
 		8C3039712E56824E00AFAE8C /* StoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreView.swift; sourceTree = "<group>"; };
 		8C3039732E57F6ED00AFAE8C /* StoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
+		8C45CCA32E5E23B6000CF96F /* DummyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 				8C30396D2E56727200AFAE8C /* Products.plist */,
 				8C3039432E5622C000AFAE8C /* Assets.xcassets */,
 				8C3039452E5622C000AFAE8C /* Preview Content */,
+				8C45CCA32E5E23B6000CF96F /* DummyView.swift */,
 			);
 			path = StoreKit2_Sample;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C45CCA42E5E23B6000CF96F /* DummyView.swift in Sources */,
 				8C3039722E56824E00AFAE8C /* StoreView.swift in Sources */,
 				8C3039742E57F6ED00AFAE8C /* StoreManager.swift in Sources */,
 				8C3039422E5622BE00AFAE8C /* ContentView.swift in Sources */,
@@ -459,7 +463,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.sigabrt.StoreKit2-Sample";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sigabrt.storekit2-sample";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -488,7 +492,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.sigabrt.StoreKit2-Sample";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sigabrt.storekit2-sample";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

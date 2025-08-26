@@ -16,17 +16,8 @@ struct StoreView: View {
     
     var body: some View {
         NavigationView {
+            
             List {
-                Section("Auto-Renewing Subscriptions") {
-                    ForEach(storeManager.products.filter { $0.type == .autoRenewable }) { p in
-                        productRow(p)
-                    }
-                }
-                Section("Non-Renewing Subscriptions") {
-                    ForEach(storeManager.products.filter { $0.type == .nonRenewable }) { p in
-                        productRow(p)
-                    }
-                }
                 Section("Events") {
                     ForEach(storeManager.products.filter { $0.type == .nonConsumable }) { p in
                         productRow(p)
@@ -34,6 +25,16 @@ struct StoreView: View {
                 }
                 Section("Goods") {
                     ForEach(storeManager.products.filter { $0.type == .consumable }) { p in
+                        productRow(p)
+                    }
+                }
+                Section("Auto-Renewing Subscriptions") {
+                    ForEach(storeManager.products.filter { $0.type == .autoRenewable }) { p in
+                        productRow(p)
+                    }
+                }
+                Section("Non-Renewing Subscriptions") {
+                    ForEach(storeManager.products.filter { $0.type == .nonRenewable }) { p in
                         productRow(p)
                     }
                 }
@@ -53,16 +54,18 @@ struct StoreView: View {
             Text(p.description)
 
             Button {
-                Task {
-                    do {
-                        purchasingProductID = p.id
-                        let transaction = try await storeManager.purchase(p)
-                        print("✅ Purchased: \(transaction?.productID ?? "nil")")
-                    } catch {
-                        print("⚠️ Purchase failed: \(error)")
+                    Task {
+                        
+                        do {
+                            purchasingProductID = p.id
+                            let transaction = try await storeManager.purchase(p)
+                            print("✅ Purchased: \(transaction?.productID ?? "nil")")
+                        } catch {
+                            print("⚠️ Purchase failed: \(error)")
+                        }
+                        purchasingProductID = nil
                     }
-                    purchasingProductID = nil
-                }
+                
             } label: {
                 if storeManager.purchasedIdentifiers.contains(p.id) {
                     Label("Purchased", systemImage: "checkmark.circle.fill")
@@ -77,7 +80,6 @@ struct StoreView: View {
             .buttonStyle(.borderedProminent)
             .tint(storeManager.purchasedIdentifiers.contains(p.id) ? .green : .blue)
             .disabled(purchasingProductID == p.id) // disable a button only pressed
-
             
             if p.isFamilyShareable.description == "true" {
                 Text("Family Shareable")

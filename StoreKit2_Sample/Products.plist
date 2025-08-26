@@ -6,19 +6,9 @@
 	<string>📉</string>
 	<key>com.sigabrt.storekit2_sample.sleep_tracer_pillow</key>
 	<string>🛌</string>
-	<key>com.sigabrt.storekit2_sample.sleep_seminar_20250820</key>
+	<key>com.sigabrt.storekit2_sample.sleep_seminar</key>
 	<string>📆</string>
-	<key>com.sigabrt.storekit2_sample.monthly_subscription</key>
-	<string>🔞</string>
-	<key>com.sigabrt.storekit2_sample.teenager_monthly_subscription</key>
-	<string>⑰</string>
-	<key>com.sigabrt.storekit2_sample.kid_monthly_subscription</key>
-	<string>🏫</string>
 	<key>com.sigabrt.storekit2_sample.adult_access</key>
-	<string>🔞🗓️</string>
-	<key>com.sigabrt.storekit2_sample.teenager_access</key>
-	<string>⑰🗓️</string>
-	<key>com.sigabrt.storekit2_sample.kid_access</key>
-	<string>🏫🗓️</string>
+	<string>🗓️</string>
 </dict>
 </plist>
