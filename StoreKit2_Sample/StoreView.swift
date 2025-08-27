@@ -114,7 +114,7 @@ struct StoreView: View {
 
 #Preview {
     
-    StoreView()
+    StoreView(storeManager: StoreManager.shared)
 }
 
 /*
