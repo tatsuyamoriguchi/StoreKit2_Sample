@@ -10,9 +10,11 @@ import StoreKit
 
 @MainActor
 class StoreManager: ObservableObject {
+
     static let shared = StoreManager() // Singleton (shared instance)
     @Published var purchasedIdentifiers: Set<String> = []
     @Published var products: [Product] = []
+
     private(set) var productIdToEmoji: [String: String] = [:]
     private init() {
         loadProductEmojis()

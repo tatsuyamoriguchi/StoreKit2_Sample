@@ -10,7 +10,7 @@ import StoreKit
 
 struct StoreView: View {
     
-    @ObservedObject var storeManager = StoreManager.shared
+    @ObservedObject var storeManager: StoreManager
     @State private var purchasingProductID: String? = nil
     
     var body: some View {

@@ -20,7 +20,7 @@ struct ContentView: View {
                 
                 NavigationLink("Go To Store") {
 
-                    StoreView()
+                    StoreView(storeManager: storeManager)
                         .task {
                             // Start listening for transactions immediately, in background
                             await storeManager.listenForTransactions()
