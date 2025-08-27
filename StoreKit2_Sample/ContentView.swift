@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject private var storeManager = StoreManager.shared
+    
     var body: some View {
         NavigationStack {
             VStack(spacing: 20) {
@@ -18,6 +19,7 @@ struct ContentView: View {
                 Text("Hello, world!")
                 
                 NavigationLink("Go To Store") {
+
                     StoreView()
                         .task {
                             // Start listening for transactions immediately, in background

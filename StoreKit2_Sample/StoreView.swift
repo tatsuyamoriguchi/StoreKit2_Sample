@@ -12,7 +12,6 @@ struct StoreView: View {
     
     @ObservedObject var storeManager = StoreManager.shared
     @State private var purchasingProductID: String? = nil
-
     
     var body: some View {
         NavigationView {
@@ -43,7 +42,7 @@ struct StoreView: View {
         .task { await storeManager.requestProducts() }
         .navigationTitle("Sleep Tracer Store")
     }
-        
+    
     @ViewBuilder
     func productRow(_ p: Product) -> some View {
         VStack(alignment: .leading, spacing: 4) {
@@ -52,24 +51,25 @@ struct StoreView: View {
                 Text(storeManager.productIdToEmoji[p.id] ?? "")
             }
             Text(p.description)
-
+            
             Button {
-                    Task {
-                        
-                        do {
-                            purchasingProductID = p.id
-                            let transaction = try await storeManager.purchase(p)
-                            print("✅ Purchased: \(transaction?.productID ?? "nil")")
-                        } catch {
-                            print("⚠️ Purchase failed: \(error)")
-                        }
-                        purchasingProductID = nil
+                Task {
+                    
+                    do {
+                        purchasingProductID = p.id
+                        let transaction = try await storeManager.purchase(p)
+                        print("✅ Purchased: \(transaction?.productID ?? "nil")")
+                    } catch {
+                        print("⚠️ Purchase failed: \(error)")
                     }
+                    purchasingProductID = nil
+                }
+                
                 
             } label: {
                 if storeManager.purchasedIdentifiers.contains(p.id) {
                     Label("Purchased", systemImage: "checkmark.circle.fill")
-
+                    
                 } else if purchasingProductID == p.id {
                     ProgressView() // spinner while purchasing
                         .progressViewStyle(CircularProgressViewStyle())
@@ -81,11 +81,12 @@ struct StoreView: View {
             .tint(storeManager.purchasedIdentifiers.contains(p.id) ? .green : .blue)
             .disabled(purchasingProductID == p.id) // disable a button only pressed
             
+            
             if p.isFamilyShareable.description == "true" {
                 Text("Family Shareable")
                     .foregroundStyle(Color.red)
             }
-
+            
             if let offer = p.subscription?.introductoryOffer {
                 if offer.paymentMode == .freeTrial {
                     Text("Free Trial: \(offer.period.debugDescription)")
@@ -106,10 +107,7 @@ struct StoreView: View {
             return product.displayPrice
         }
     }
-
     
-
-
 }
 
 
@@ -132,7 +130,7 @@ struct StoreView: View {
  Use StoreKit 2 APIs:
  let entitlements = await Transaction.currentEntitlements
  if entitlements.contains(where: { $0.productID == "com.yourapp.monthly_seminar" }) {
-     // Grant access to seminar content
+ // Grant access to seminar content
  }
  Non-subscription seminars (one-time) remain non-consumable and cannot use offer codes. You’d manage any free access yourself.
  💡 Key point:
@@ -140,3 +138,11 @@ struct StoreView: View {
  If you want subscribers to get free seminars automatically, bundle the seminars behind an active subscription.
  
  */
+
+/*
+ You're currently subscribed to this. Your 1-month subscription renews on Sep 26, 2025 for $9.99. To review subscription settings or cancel this subscription, tap Manager.
+ [Environment: Xcode]
+ 
+ Manage   OK
+ */
+
